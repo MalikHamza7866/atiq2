@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby Magic Studio</title>
+  <!-- Import Material UI CDN -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-datepicker/dist/react-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/react-datepicker/dist/react-datepicker.css" />
+  <script src="https://unpkg.com/@mui/material/umd/material-ui.production.min.js"></script>
+
+  <!-- Custom CSS styles -->
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #3f51b5;
+    }
+
+    .subtitle {
+      font-size: 24px;
+      font-weight: normal;
+      color: #757575;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .inputField {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .button {
+      margin-top: 20px;
+    }
+
+    .successMessage {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Baby Magic Studio</div>
+    <div class="subtitle">Capture the precious moments of your baby</div>
+    <div class="form">
+      <!-- Name input -->
+      <div id="name-input" class="inputField"></div>
+      <script>
+        const nameInput = MaterialUI.TextField;
+        ReactDOM.render(
+          React.createElement(nameInput, {
+            id: "name",
+            label: "Name",
+            variant: "outlined",
+            required: true,
+            className: "inputField"
+          }),
+          document.getElementById('name-input')
+        );
+      </script>
+      <!-- Email input -->
+      <div id="email-input" class="inputField"></div>
+      <script>
+        const emailInput = MaterialUI.TextField;
+        ReactDOM.render(
+          React.createElement(emailInput, {
+            id: "email",
+            label: "Email",
+            variant: "outlined",
+            type: "email",
+            required: true,
+            className: "inputField"
+          }),
+          document.getElementById('email-input')
+        );
+      </script>
+      <!-- Phone input -->
+      <div id="phone-input" class="inputField"></div>
+      <script>
+        const phoneInput = MaterialUI.TextField;
+        ReactDOM.render(
+          React.createElement(phoneInput, {
+            id: "phone",
+            label: "Phone",
+            variant: "outlined",
+            type: "tel",
+            required: true,
+            className: "inputField"
+          }),
+          document.getElementById('phone-input')
+        );
+      </script>
+      <div id="button"></div>
+      <script>
+        const Button = MaterialUI.Button;
+        const [success, setSuccess] = React.useState(false);
+
+        const handleSubmit = () => {
+          // Your form submission logic here
+          setSuccess(true);
+        };
+
+        ReactDOM.render(
+          React.createElement(Button, {
+            variant: "contained",
+            color: "primary",
+            className: "button",
+            onClick: handleSubmit
+          }, "Book Appointment"),
+          document.getElementById('button')
+        );
+
+        if (success) {
+          ReactDOM.render(
+            React.createElement('div', {
+              className: 'successMessage'
+            }, 'Form submitted successfully!'),
+            document.body
+          );
+        }
+      </script>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
